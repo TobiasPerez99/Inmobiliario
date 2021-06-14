@@ -23,12 +23,16 @@
 .texto-entrada{
     a{
         color: $negro;
+        margin-top: 10rem;
+
+        @include tablet{
+            margin-top: 0;
+        }
     }
 
     h4{
         margin: 0;
         line-height: 1.4;
-
         &::after{
             content: '';
             display: block;
