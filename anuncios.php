@@ -1,35 +1,7 @@
- <!DOCTYPE html>
- <html lang="en">
- <head>
-     <meta charset="UTF-8">
-     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Inmobiliaria</title>
-     <link rel="stylesheet" href="build/css/app.css">
- </head>
- <body>
+<?php include 'includes/templates/header.php' ?>
 
-    <header class="header inicio">
-        <div class="contenedor contenido-header">
-            <div class="barra">
-                <a href="/">
-                    <img src="build/img/logo.svg" alt="logotipo">
-                </a>
-
-                <nav class="navegacion">
-                    <a href="nosotros.html">Nosotros</a>
-                    <a href="anuncios.html">Anuncios</a>
-                    <a href="blog.html">Blog</a>
-                    <a href="contacto.html">Contacto</a>
-                </nav>
-            </div>
-            <h1>Venta de casas y departemantos exclusivos de lujo</h1>
-        </div>
-
-    </header>  
-
-    <main class="contenedor seccion">
-            <section class="seccion contenedor">
+<main class="contenedor seccion">
+    <section class="seccion contenedor">
         <h2>Casas y Departamentos en Venta</h2>
         <div class="contenedor-anuncio">
             <!-- Inicio Propiedad Nro 1  -->
@@ -39,8 +11,8 @@
                     <source srcset="build/img/anuncio1.jpg" type="imagen/jpeg">
                     <img loading="lazy" src="build/img/anuncio1.jpg" alt="anuncio1">
                 </picture>
-                
-                
+
+
                 <div class="contenido-anuncio">
                     <h3>Casa con vista al lago</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi rerum deleniti iusto sint</p>
@@ -61,7 +33,7 @@
                         </li>
 
                     </ul>
-                            <a href="anuncio.html" class="boton boton-amarillo-block">Ver Propiedad</a>
+                    <a href="anuncio.php" class="boton boton-amarillo-block">Ver Propiedad</a>
                 </div>
             </div>
             <!-- Fin Propiedad Nro 1  -->
@@ -71,7 +43,7 @@
                     <source srcset="build/img/anuncio1.webp" type="imagen/webp">
                     <source srcset="build/img/anuncio1.jpg" type="imagen/jpeg">
                     <img loading="lazy" src="build/img/anuncio2.jpg" alt="anuncio1">
-                </picture>            
+                </picture>
                 <div class="contenido-anuncio">
                     <h3>Casa con vista al lago</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi rerum deleniti iusto sint</p>
@@ -92,20 +64,20 @@
                         </li>
 
                     </ul>
-                            <a href="anuncio.html" class="boton boton-amarillo-block">Ver Propiedad</a>
+                    <a href="anuncio.php" class="boton boton-amarillo-block">Ver Propiedad</a>
                 </div>
             </div>
 
-                <!-- Fin Propiedad nro2 -->
-                <!-- Inicio Propiedad nro3 -->
-                        <div class="anuncio">
+            <!-- Fin Propiedad nro2 -->
+            <!-- Inicio Propiedad nro3 -->
+            <div class="anuncio">
                 <picture>
                     <source srcset="build/img/anuncio1.webp" type="imagen/webp">
                     <source srcset="build/img/anuncio1.jpg" type="imagen/jpeg">
                     <img loading="lazy" src="build/img/anuncio3.jpg" alt="anuncio1">
                 </picture>
-                
-                
+
+
                 <div class="contenido-anuncio">
                     <h3>Casa con vista al lago</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi rerum deleniti iusto sint</p>
@@ -126,17 +98,17 @@
                         </li>
 
                     </ul>
-                            <a href="anuncio.html" class="boton boton-amarillo-block">Ver Propiedad</a>
-                </div>        
+                    <a href="anuncio.php" class="boton boton-amarillo-block">Ver Propiedad</a>
+                </div>
             </div>
-                                    <div class="anuncio">
+            <div class="anuncio">
                 <picture>
                     <source srcset="build/img/anuncio1.webp" type="imagen/webp">
                     <source srcset="build/img/anuncio1.jpg" type="imagen/jpeg">
                     <img loading="lazy" src="build/img/anuncio4.jpg" alt="anuncio1">
                 </picture>
-                
-                
+
+
                 <div class="contenido-anuncio">
                     <h3>Casa con vista al lago</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi rerum deleniti iusto sint</p>
@@ -157,17 +129,17 @@
                         </li>
 
                     </ul>
-                            <a href="anuncio.html" class="boton boton-amarillo-block">Ver Propiedad</a>
-                </div>        
+                    <a href="anuncio.php" class="boton boton-amarillo-block">Ver Propiedad</a>
+                </div>
             </div>
-                                    <div class="anuncio">
+            <div class="anuncio">
                 <picture>
                     <source srcset="build/img/anuncio1.webp" type="imagen/webp">
                     <source srcset="build/img/anuncio1.jpg" type="imagen/jpeg">
                     <img loading="lazy" src="build/img/anuncio5.jpg" alt="anuncio1">
                 </picture>
-                
-                
+
+
                 <div class="contenido-anuncio">
                     <h3>Casa con vista al lago</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi rerum deleniti iusto sint</p>
@@ -188,17 +160,17 @@
                         </li>
 
                     </ul>
-                            <a href="anuncio.html" class="boton boton-amarillo-block">Ver Propiedad</a>
-                </div>        
+                    <a href="anuncio.php" class="boton boton-amarillo-block">Ver Propiedad</a>
+                </div>
             </div>
-                                    <div class="anuncio">
+            <div class="anuncio">
                 <picture>
                     <source srcset="build/img/anuncio1.webp" type="imagen/webp">
                     <source srcset="build/img/anuncio1.jpg" type="imagen/jpeg">
-                    <img loading="lazy" src="build/img/anuncio.jpg" alt="anuncio1">
+                    <img loading="lazy" src="build/img/anuncio1.jpg" alt="anuncio1">
                 </picture>
-                
-                
+
+
                 <div class="contenido-anuncio">
                     <h3>Casa con vista al lago</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi rerum deleniti iusto sint</p>
@@ -219,31 +191,32 @@
                         </li>
 
                     </ul>
-                            <a href="anuncio.html" class="boton boton-amarillo-block">Ver Propiedad</a>
-                </div>        
+                    <a href="anuncio.php" class="boton boton-amarillo-block">Ver Propiedad</a>
+                </div>
             </div>
-            
-        <!-- Fin de propiedad nro 3 -->
+
+            <!-- Fin de propiedad nro 3 -->
         </div>
     </section>
 
-    </main>
-    <footer class="footer seccion">
+</main>
+<footer class="footer seccion">
 
-        <div class="contenedor contenedor-footer">
-            <nav class="navegacion">
-                <a href="nosotros.html">Nosotros</a>
-                <a href="anuncios.html">Anuncios</a>
-                <a href="blog.html">Blog</a>
-                <a href="contacto.html">Contacto</a>
-            </nav>
-        </div>
+    <div class="contenedor contenedor-footer">
+        <nav class="navegacion">
+            <a href="nosotros.php">Nosotros</a>
+            <a href="anuncios.php">Anuncios</a>
+            <a href="blog.php">Blog</a>
+            <a href="contacto.php">Contacto</a>
+        </nav>
+    </div>
 
-        <p class="copyright">Todos los derechos reservados &copy;</p>
+    <p class="copyright">Todos los derechos reservados &copy;</p>
 
-    </footer>
+</footer>
 
 
-     <script src="build/js/bundle.min.js"></script>
- </body>
- </html>
+<script src="build/js/bundle.min.js"></script>
+</body>
+
+</html>
