@@ -1,4 +1,10 @@
-<?php include 'includes/templates/header.php' ?>
+<?php 
+
+    require'includes/funciones.php';
+
+    incluirTemplate('header');
+
+?>
 
 <main class="contenedor seccion">
     <h1>Mas sobre nosotros</h1>
@@ -16,7 +22,7 @@
         </div>
         <div class="icono">
             <img src="build/img/icono3.svg" alt="icono seguridad" loading="lazy">
-            <h3>Tiempo</h3>
+            <h3>Julian hermoso</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus dolorem quibusdam asperiores ab nesciunt explicabo, reiciendis sit facere iste pariatur autem labore delectus molestiae, totam omnis qui, ipsum reprehenderit? Reprehenderit?</p>
         </div>
     </div>
@@ -187,5 +193,5 @@
     </section>
 </div>
 
-<?php include 'includes/templates/footer.php' ?>
+<?php incluirTemplate('footer'); ?>
 
