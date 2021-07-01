@@ -188,7 +188,7 @@
         <h3>Testimoniales</h3>
         <div class="testimonial">
             <blockquote>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </blockquote>
-            <p>- Tobias Leonel Perez</p>
+            <p>- Tobias Leonel</p>
         </div>
     </section>
 </div>
