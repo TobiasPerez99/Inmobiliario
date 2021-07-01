@@ -29,9 +29,9 @@ $vendedor = $_POST['vendedor'];
 
 //insertando en la db
 
-$query = "INSERT INTO propiedades(titulo, descripcion , precio , habitaciones , wc, estacionamiento , id) VALUES ('$titulo' , '$descripcion' , '$precio' , '$habitaciones' , '$wc' ,'$estacionamiento' ,'$vendedor')";
+$query = "INSERT INTO propiedades(titulo, descripcion , precio , habitaciones , wc, estacionamiento , vendedorid) VALUES ('$titulo' , '$descripcion' , '$precio' , '$habitaciones' , '$wc' ,'$estacionamiento' ,'$vendedor')";
 
-// echo($query);
+echo($query);
 
 $resultado = mysqli_query($db , $query);
 
