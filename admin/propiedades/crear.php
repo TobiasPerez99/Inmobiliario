@@ -9,6 +9,14 @@ $db = conectarDB();
 //Arreglo con mensajes de erro
 $errores = [];
 
+$titulo = '';
+$precio = '';
+$descripcion = '';
+$habitaciones = '';
+$estacionamiento = '';
+$wc = '';
+$vendedor = '';
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -81,29 +89,29 @@ incluirTemplate('header');
             <legend>Informacion General de Nuestra Propiedad</legend>
 
             <label for="titulo">Titulo: </label>
-            <input type="text" name="titulo" id="titulo" placeholder="Titulo Propiedad">
+            <input type="text" name="titulo" id="titulo" placeholder="Titulo Propiedad" value="<?php echo $titulo; ?>">
 
             <label for="precio">Precio: </label>
-            <input type="number" name="precio" id="precio" placeholder="Precio de la Propiedad">
+            <input type="number" name="precio" id="precio" placeholder="Precio de la Propiedad" value="<?php echo $precio; ?>">
 
-            <label for="imagen">Imagen: </label>
+            <label for=" imagen">Imagen: </label>
             <input type="file" id="imagen" name="imagen" accept="image/jpeg , image/png">
 
             <label for="descripcion">Descripcion</label>
-            <textarea name="descripcion" id="descripcion" cols="30" rows="10"></textarea>
+            <textarea name="descripcion" id="descripcion" cols="30" rows="10"><?php echo $descripcion; ?></textarea>
         </fieldset>
 
         <fieldset>
             <legend>Informacion de la Propiedad</legend>
 
             <label for="habitaciones">Habitaciones: </label>
-            <input type="number" name="habitaciones" id="habitaciones" placeholder="Cantidad de Habitaciones">
+            <input type="number" name="habitaciones" id="habitaciones" placeholder="Cantidad de Habitaciones" value="<?php echo $habitaciones; ?>">
 
-            <label for="estacionamiento">Estacionamiento: </label>
-            <input type="number" name="estacionamiento" id="estacionamiento" placeholder="Cantidad de Estacionamientos ">
+            <label for=" estacionamiento">Estacionamiento: </label>
+            <input type="number" name="estacionamiento" id="estacionamiento" placeholder="Cantidad de Estacionamientos" value="<?php echo $estacionamiento; ?>">
 
-            <label for="wc">Baños: </label>
-            <input type="number" id="wc" name="wc" placeholder="Cantidad de wc">
+            <label for=" wc">Baños: </label>
+            <input type="number" id="wc" name="wc" placeholder="Cantidad de wc" value="<?php echo $wc; ?>">
         </fieldset>
 
         <fieldset>
