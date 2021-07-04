@@ -19,6 +19,7 @@ $descripcion = '';
 $habitaciones = '';
 $estacionamiento = '';
 $wc = '';
+$creado = date('Y/m/d');
 $vendedor = '';
 
 
@@ -30,7 +31,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $habitaciones = $_POST['habitaciones'];
     $estacionamiento = $_POST['estacionamiento'];
     $wc = $_POST['wc'];
+    $creado = date('Y/m/d');
     $vendedor = $_POST['vendedor'];
+    
 
     if (!$titulo) {
         $errores[] = "Debes agregar un Titulo";
@@ -62,15 +65,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     //insertando en la db
 
-    $query = "INSERT INTO propiedades(titulo, descripcion , precio , habitaciones , wc, estacionamiento , vendedorid) VALUES ('$titulo' , '$descripcion' , '$precio' , '$habitaciones' , '$wc' ,'$estacionamiento' ,'$vendedor')";
+    if (empty($errores)) {
+        $query = "INSERT INTO propiedades(titulo, descripcion , precio , habitaciones , wc, estacionamiento, creado , vendedorid) VALUES ('$titulo' , '$descripcion' , '$precio' , '$habitaciones' , '$wc' ,'$estacionamiento', '$creado' ,'$vendedor')";
 
-    echo ($query);
+        $resultado = mysqli_query($db, $query);
 
-    $resultado = mysqli_query($db, $query);
-
-    if (!$resultado) {
-        echo "Insertado Correctamente";
+            if ($resultado) {
+            header('Location: /admin');
+        }
     }
+
 }
 require '../../includes/funciones.php';
 incluirTemplate('header');
@@ -124,7 +128,9 @@ incluirTemplate('header');
                 <option value="">--Selectiona---</option>
                 <?php while ($vendedor = mysqli_fetch_assoc($resultado1)) : ?>
 
-                    <option value="<?php echo $vendedor['id']?>"><?php echo $vendedor['nombre'] . " " . $vendedor['apellido']; ?></option>
+                    <option <?php echo $vendedorid === $vendedor['id'] ? 'selected' : '' ; ?> value="<?php echo $vendedor['id']; ?>" >
+                    <?php echo $vendedor['nombre'] . " " . $vendedor['apellido']; ?>
+                    </option>
 
                 <?php endwhile; ?>
             </select>
