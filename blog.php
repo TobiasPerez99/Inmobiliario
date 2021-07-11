@@ -19,7 +19,7 @@ incluirTemplate('header');
         <div class="texto-entrada">
             <a href="entrada.php">
                 <H4>Terraza en el techo de tu casa</H4>
-                <p>Escrito el <span>14/06/2021</span>Por <span>Admin</span></p>
+                <p>Escrito el<span>14/06/2021</span>Por <span>Admin</span></p>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta quasi aliquam esse asperiores distinctio at officiis corporis.</p>
             </a>
         </div>
