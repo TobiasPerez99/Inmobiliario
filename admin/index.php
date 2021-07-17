@@ -17,6 +17,30 @@ $queryResultado = mysqli_query($db, $query);
 
 $resultado = $_GET['resultado'] ?? null;
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id = $_POST['id'];
+    $id = filter_var($id , FILTER_VALIDATE_INT);
+
+    if ($id) {
+
+        $query = "SELECT imagen FROM propiedades WHERE id = ${id}";
+        $resultado = mysqli_query($db , $query);
+        $propiedad = mysqli_fetch_assoc($resultado);
+
+        unlink('../imagenes/'. $propiedad['imagen']);
+
+
+        $query = "DELETE FROM propiedades WHERE id = ${id}";
+
+        $resultado = mysqli_query($db , $query);
+
+        if ($resultado) {
+            header('location: /admin?resultado=3' );
+        }
+    }
+
+}
+
 
 //incluye template
 require '../includes/funciones.php';
@@ -30,6 +54,10 @@ incluirTemplate('header');
 
     <?php if (intval($resultado) == 1) : ?>
         <p class="alerta exito" style="padding: .5rem;text-align:  center;color: white;font-weight: 700;text-transform: uppercase;margin: 1rem 0 ; background-color:rgb(54, 161, 54)">Anuncio creado correctamente</p>
+    <?php elseif (intval($resultado) ==  2) : ?>
+        <p class="alerta exito" style="padding: .5rem;text-align:  center;color: white;font-weight: 700;text-transform: uppercase;margin: 1rem 0 ; background-color:rgb(54, 161, 54)">Anuncio Actualizado correctamente</p>
+    <?php elseif (intval($resultado) ==  3) : ?>
+        <p class="alerta exito" style="padding: .5rem;text-align:  center;color: white;font-weight: 700;text-transform: uppercase;margin: 1rem 0 ; background-color:rgb(54, 161, 54)">Anuncio Eliminado correctamente</p>
     <?php endif; ?>
 
     <a href="/admin/propiedades/crear.php" class="boton-verde">Crear Nueva Propiedad</a>
@@ -57,8 +85,14 @@ incluirTemplate('header');
                     <td><img class="imagen-tabla" src="/imagenes/<?php echo $propiedades['imagen'] ?>" alt=""></td>
                     <td><?php echo $propiedades['precio'] ?></td>
                     <td>
-                        <a class="boton-rojo-block" href="">Eliminar</a>
-                        <a class="boton-verde-block" href="">Actualizar</a>
+                        <form method="POST">
+
+                            <input type="hidden" name="id" value="<?php echo $propiedades['id'] ?>">
+
+                            <input  type="submit" class="w-100" value="Eliminar">
+
+                        </form>
+                        <a class="w-200" href="/admin/propiedades/actualizar.php/?id=<?php echo $propiedades['id'] ?>">Actualizar</a>
                     </td>
                 </tr>
             <?php endwhile; ?>

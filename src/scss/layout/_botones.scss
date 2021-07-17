@@ -21,3 +21,31 @@
 .boton-verde-block {
     @include botones($verde, block)
 }
+.w-100{
+    cursor: pointer;
+    background-color: rgb(189, 7, 7);
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 1rem 3rem;
+    text-align: center;
+    margin-top: 2.5rem;
+    display: block;
+    border: none;
+    width: 100%;
+    border-radius: 2rem;
+}
+.w-200 {
+    cursor: pointer;
+    background-color:#71B100;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 1rem 3rem;
+    text-align: center;
+    margin-top: 2.5rem;
+    display: block;
+    border: none;
+    width: 100%;
+    border-radius: 2rem;
+}
