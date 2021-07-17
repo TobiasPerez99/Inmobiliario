@@ -10,6 +10,8 @@ $db = conectarDB();
 $consulta = "SELECT * FROM vendedores";
 $resultado1 = mysqli_query($db, $consulta);
 
+
+
 //Arreglo con mensajes de erro
 $errores = [];
 
@@ -85,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $carpetaImagenes = '../../imagenes/';
 
         if (!is_dir($carpetaImagenes)) {
-            mkdir($carpetaImagenes); 
+            mkdir($carpetaImagenes);
         }
 
         //randomico nombre
@@ -101,6 +103,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $resultado = mysqli_query($db, $query);
 
+
+/*         echo "<pre>";
+        var_dump($db);
+        echo "</pre>";
+ */
         if ($resultado) {
             header('Location: /admin?resultado=1');
         }
@@ -172,5 +179,6 @@ incluirTemplate('header');
 
     <a href="/admin/index.php" class="boton-verde">Volver</a>
 </main>
+
 
 <?php incluirTemplate('footer'); ?>

@@ -1,15 +1,23 @@
 .boton-amarillo{
 
     @include botones($amarillo, inline-block);
-    
-}   
+
+}
 .boton-amarillo-block{
 
     @include botones($amarillo, block);
-    
-}   
-.boton-verde{   
+
+}
+.boton-verde{
 
     @include botones($verde, inline-block)
 
+}
+
+.boton-rojo-block{
+    @include botones($rojo , block)
+}
+
+.boton-verde-block {
+    @include botones($verde, block)
 }

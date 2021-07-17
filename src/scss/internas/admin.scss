@@ -1,5 +1,5 @@
 .alerta{
-    
+
     padding: .5rem;
     text-align:  center;
     color: white;
@@ -13,4 +13,29 @@
     &.exito{
         background-color: rgb(54, 161, 54);
     }
+}
+
+table.propiedades{
+    margin-top: 4rem;
+    width: 100%;
+    border-spacing: 0;
+
+    thead{
+
+        background-color: rgb(54, 161, 54);
+
+        th{
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+    }
+
+    .imagen-tabla{
+
+        width: 10rem;
+
+    }
+
 }
