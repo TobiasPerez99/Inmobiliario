@@ -1,9 +1,17 @@
 <?php
 
+//importar la conexion
 
+require '../includes/config/databases.php';
+$db = conectarDB();
 
+//escribir el query
 
+$query = "SELECT * FROM propiedades";
 
+//consultar db
+
+$queryResultado = mysqli_query($db, $query);
 
 //MUestra mensaje condicional
 
@@ -29,33 +37,42 @@ incluirTemplate('header');
     <a href="/admin/propiedades/borrar.php" class="boton-verde">Eliminar Nueva Propiedad</a>
 
 
-<table class="propiedades">
+    <table class="propiedades">
 
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Titulo</th>
-            <th>Imagen</th>
-            <th>Precio</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>1</td>
-            <td>Casa en la playa</td>
-            <td><img class="imagen-tabla" src="/imagenes/17a57be3e2e65e007788707d50f4558e.jpg" alt=""></td>
-            <td>1.000.000</td>
-            <td>
-                <a class="boton-rojo-block" href="">Eliminar</a>
-                <a class="boton-verde-block" href="">Actualizar</a>
-            </td>
-        </tr>
-    </tbody>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titulo</th>
+                <th>Imagen</th>
+                <th>Precio</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
 
-</table>
+            <?php while ($propiedades = mysqli_fetch_assoc($queryResultado)) : ?>
+                <tr>
+                    <td><?php echo $propiedades['id'] ?></td>
+                    <td><?php echo $propiedades['titulo'] ?></td>
+                    <td><img class="imagen-tabla" src="/imagenes/<?php echo $propiedades['imagen'] ?>" alt=""></td>
+                    <td><?php echo $propiedades['precio'] ?></td>
+                    <td>
+                        <a class="boton-rojo-block" href="">Eliminar</a>
+                        <a class="boton-verde-block" href="">Actualizar</a>
+                    </td>
+                </tr>
+            <?php endwhile; ?>
+        </tbody>
+
+    </table>
 
 
 </main>
 
-<?php incluirTemplate('footer'); ?>
+<?php
+
+mysqli_close($db);
+
+incluirTemplate('footer');
+
+?>
