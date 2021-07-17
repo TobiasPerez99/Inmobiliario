@@ -19,26 +19,25 @@ $resultado = $_GET['resultado'] ?? null;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['id'];
-    $id = filter_var($id , FILTER_VALIDATE_INT);
+    $id = filter_var($id, FILTER_VALIDATE_INT);
 
     if ($id) {
 
         $query = "SELECT imagen FROM propiedades WHERE id = ${id}";
-        $resultado = mysqli_query($db , $query);
+        $resultado = mysqli_query($db, $query);
         $propiedad = mysqli_fetch_assoc($resultado);
 
-        unlink('../imagenes/'. $propiedad['imagen']);
+        unlink('../imagenes/' . $propiedad['imagen']);
 
 
         $query = "DELETE FROM propiedades WHERE id = ${id}";
 
-        $resultado = mysqli_query($db , $query);
+        $resultado = mysqli_query($db, $query);
 
         if ($resultado) {
-            header('location: /admin?resultado=3' );
+            header('location: /admin?resultado=3');
         }
     }
-
 }
 
 
@@ -89,7 +88,7 @@ incluirTemplate('header');
 
                             <input type="hidden" name="id" value="<?php echo $propiedades['id'] ?>">
 
-                            <input  type="submit" class="w-100" value="Eliminar">
+                            <input type="submit" class="w-100" value="Eliminar">
 
                         </form>
                         <a class="w-200" href="/admin/propiedades/actualizar.php/?id=<?php echo $propiedades['id'] ?>">Actualizar</a>
