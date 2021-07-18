@@ -12,3 +12,5 @@ function conectarDB(){
     return $db;
 
 }
+
+?>

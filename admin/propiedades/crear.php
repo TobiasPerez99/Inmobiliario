@@ -103,11 +103,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $resultado = mysqli_query($db, $query);
 
+        // echo "<pre>";
+        // var_dump($db);
+        // echo "</pre>";
 
-/*         echo "<pre>";
-        var_dump($db);
-        echo "</pre>";
- */
         if ($resultado) {
             header('Location: /admin?resultado=1');
         }
