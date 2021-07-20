@@ -1,6 +1,13 @@
 <?php
+require '../includes/funciones.php';
 
-//importar la conexion
+session_start();
+
+$auth = $_SESSION['login'];
+
+if (!$auth) {
+    header('Location: /');
+}
 
 require '../includes/config/databases.php';
 $db = conectarDB();
@@ -42,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 //incluye template
-require '../includes/funciones.php';
+
 
 incluirTemplate('header');
 
@@ -60,9 +67,6 @@ incluirTemplate('header');
     <?php endif; ?>
 
     <a href="/admin/propiedades/crear.php" class="boton-verde">Crear Nueva Propiedad</a>
-    <a href="/admin/propiedades/actualizar.php" class="boton-verde">Actualizar Nueva Propiedad</a>
-    <a href="/admin/propiedades/borrar.php" class="boton-verde">Eliminar Nueva Propiedad</a>
-
 
     <table class="propiedades">
 
