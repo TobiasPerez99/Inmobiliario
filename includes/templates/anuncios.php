@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/../config/databases.php';
+// require __DIR__ . '/../config/databases.php';
 
 $db = conectarDB();
 

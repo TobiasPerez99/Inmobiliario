@@ -3,3 +3,4 @@ build/img
 build/css
 build/js
 /imagenes
+/vendor/

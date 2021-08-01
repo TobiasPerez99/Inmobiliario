@@ -1,0 +1,10 @@
+{
+    "name": "tobiasleonel/inmo",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\" : "./classes"
+        }
+    },
+    "require": {}
+}

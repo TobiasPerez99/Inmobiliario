@@ -1,9 +1,8 @@
 <?php
 
-//importar la conexion
 
-require 'includes/config/databases.php';
 $db = conectarDB();
+require 'includes/app.php';
 
 
 //autenticar al usuario
@@ -60,7 +59,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 
-require 'includes/funciones.php';
 
 incluirTemplate('header');
 

@@ -1,6 +1,6 @@
 <?php
 
-require 'includes/config/databases.php';
+require 'includes/app.php';
 $db = conectarDB();
 
 //Crear un Email y un password
