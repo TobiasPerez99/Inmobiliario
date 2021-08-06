@@ -19,18 +19,7 @@ function estaAutenticado(){
 }
 
 function debuguear($variable){
-
-    if(isset($variable)){
-
         echo "<pre>";
         var_dump($variable);
         echo "</pre>";
-
-    }else{
-
-        echo "<h2>";
-        echo("No declarado pa");
-        echo "</h2>";
-    }
-    
 }

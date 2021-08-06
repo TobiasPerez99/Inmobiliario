@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $propiedad = new Propiedad($_POST);
 
-    debuguear($propiedad);
+    // debuguear($propiedad);
 
     $propiedad->guardar();
 
