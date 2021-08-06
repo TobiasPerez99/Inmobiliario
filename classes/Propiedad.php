@@ -4,6 +4,8 @@ namespace App;
 
 class Propiedad {
 
+    protected static $db;
+
     public $id;
     public $titulo;
     public $precio;
@@ -26,14 +28,28 @@ class Propiedad {
         $this->habitaciones = $args['habitaciones']  ?? '' ;
         $this->wc = $args['wc']  ?? '' ;
         $this->estacionamiento = $args['estacionamiento']  ?? '' ;
-        $this->creado = $args['creado']  ?? '' ;
+        $this->creado = date('Y/m/d');
         $this->vendedorid = $args['vendedorid']  ?? '' ;
+      
+    }
+
+    public function guardar(){
+
+        echo "Guardando en la base de datos"; 
+
         
+        $query = "INSERT INTO propiedades(titulo, imagen ,descripcion , precio , habitaciones , wc, estacionamiento, creado , vendedorid) VALUES ('$this->titulo' , '$this->imagen' ,'$this->descripcion' , '$this->precio' , '$this->habitaciones' , '$this->wc' ,'$this->estacionamiento', '$this->creado' ,'$this->vendedorid')";
 
+         $resultado = self::$db->query($query); 
 
+         debuguear($resultado);
 
     }
 
-
+    public static function setDB($database){
+        
+        self::$db = $database;
+    
+    }
 
 }

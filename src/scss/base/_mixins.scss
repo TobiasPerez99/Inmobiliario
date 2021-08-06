@@ -20,6 +20,7 @@
     display: grid;
     gap: $espaciado;
     grid-template-columns: repeat($columnas, 1fr);
+    justify-content: center;
 }
 @mixin botones($bgcolor, $display) {
     background-color: $bgcolor;

@@ -21,6 +21,8 @@ $propiedades = mysqli_fetch_assoc($resultado);
 incluirTemplate('header');
 
 ?>
+
+
 <main class="contenedor seccion contenido-centrado">
     <h1><?php echo $propiedades['titulo'] ?></h1>
     <picture>

@@ -1,8 +1,8 @@
 <?php
 
-function conectarDB(){
+function conectarDB() : mysqli{
 
-    $db = mysqli_connect('192.168.0.13','meemba' , 'meemba', 'bienes_raices');
+    $db = new mysqli('192.168.0.13','meemba' , 'meemba', 'bienes_raices');
 
     if (!$db) {
         echo "Eror no se pudo conectar";

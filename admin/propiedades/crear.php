@@ -3,21 +3,16 @@ require '../../includes/app.php';
 
 use App\Propiedad;
 
-$propiedad = new Propiedad; 
-
-debuguear($propiedad);
-
-$auth = estaAutenticado();
-
-if (!$auth) {
-    header('Location: /');
-}
+estaAutenticado();
 
 $db = conectarDB();
 
 //obtener vendedores
 $consulta = "SELECT * FROM vendedores";
 $resultado1 = mysqli_query($db, $consulta);
+
+
+
 
 //Arreglo con mensajes de erro
 $errores = [];
@@ -34,6 +29,13 @@ $vendedor = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+
+    $propiedad = new Propiedad($_POST);
+
+    debuguear($propiedad);
+
+    $propiedad->guardar();
+
     $titulo = mysqli_real_escape_string($db,  $_POST['titulo']);
     $precio = mysqli_real_escape_string($db,  $_POST['precio']);
     $descripcion = mysqli_real_escape_string($db,  $_POST['descripcion']);
@@ -41,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $estacionamiento = mysqli_real_escape_string($db,  $_POST['estacionamiento']);
     $wc = mysqli_real_escape_string($db,  $_POST['wc']);
     $creado = date('Y/m/d');
-    $vendedor = mysqli_real_escape_string($db,  $_POST['vendedor']);
+    $vendedor = mysqli_real_escape_string($db,  $_POST['vendedorid']);
 
     //asignando imagen
 
@@ -99,24 +101,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         //randomico nombre
 
-        $nombreImagen = md5( uniqid( rand(), true ) ) . ".jpg";
+        $nombreImagen = md5(uniqid(rand(), true)) . ".jpg";
 
 
         //subir la  imagen
-        move_uploaded_file($imagen['tmp_name'] , $carpetaImagenes . $nombreImagen );
+        move_uploaded_file($imagen['tmp_name'], $carpetaImagenes . $nombreImagen);
 
+        // $resultado = mysqli_query($db, $query);
 
-        $query = "INSERT INTO propiedades(titulo, imagen ,descripcion , precio , habitaciones , wc, estacionamiento, creado , vendedorid) VALUES ('$titulo' , '$nombreImagen' ,'$descripcion' , '$precio' , '$habitaciones' , '$wc' ,'$estacionamiento', '$creado' ,'$vendedor')";
-
-        $resultado = mysqli_query($db, $query);
-
-        // echo "<pre>";
-        // var_dump($db);
-        // echo "</pre>";
-
-        if ($resultado) {
-            header('Location: /admin?resultado=1');
-        }
+        // if ($resultado) {
+        //     header('Location: /admin?resultado=1');
+        // }
     }
 }
 incluirTemplate('header');
@@ -166,15 +161,14 @@ incluirTemplate('header');
 
         <fieldset>
             <legend>Vendedor</legend>
-            <select name="vendedor" id="">
-                <option value="">--Selectiona---</option>
+            <select name="vendedorid">
+                <option value="">--Seleccione--</option>
                 <?php while ($vendedor = mysqli_fetch_assoc($resultado1)) : ?>
-
-                    <option <?php echo $vendedorid === $vendedor['id'] ? 'selected' : ''; ?> value="<?php echo $vendedor['id']; ?>">
+                    <option <?php echo $vendedor === $vendedor['id'] ? 'selected' : ''; ?> value="<?php echo $vendedor['id'];  ?>">
                         <?php echo $vendedor['nombre'] . " " . $vendedor['apellido']; ?>
                     </option>
-
                 <?php endwhile; ?>
+
             </select>
         </fieldset>
 
