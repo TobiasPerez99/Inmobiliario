@@ -1,9 +1,9 @@
 <?php
 
 
-$db = conectarDB();
 require 'includes/app.php';
 
+$db = conectarDB();
 
 //autenticar al usuario
 

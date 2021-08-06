@@ -1,5 +1,11 @@
 <?php
-require '../../includes/funciones.php';
+require '../../includes/app.php';
+
+use App\Propiedad;
+
+$propiedad = new Propiedad; 
+
+debuguear($propiedad);
 
 $auth = estaAutenticado();
 
@@ -7,17 +13,11 @@ if (!$auth) {
     header('Location: /');
 }
 
-//Base de datos
-
-require '../../includes/config/databases.php';
-
 $db = conectarDB();
 
 //obtener vendedores
 $consulta = "SELECT * FROM vendedores";
 $resultado1 = mysqli_query($db, $consulta);
-
-
 
 //Arreglo con mensajes de erro
 $errores = [];

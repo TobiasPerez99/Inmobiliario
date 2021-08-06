@@ -8,7 +8,7 @@ use App\Propiedad;
 
 $propiedad = new Propiedad;
 
-var_dump($propiedad);
+
 
 
 
