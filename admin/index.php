@@ -1,16 +1,8 @@
 <?php
-require '../includes/funciones.php';
+require '../includes/app.php';
 
-session_start();
+estaAutenticado();
 
-$auth = $_SESSION['login'];
-
-if (!$auth) {
-    header('Location: /');
-}
-
-require '../includes/config/databases.php';
-$db = conectarDB();
 
 //escribir el query
 

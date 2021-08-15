@@ -58,7 +58,7 @@ class Propiedad {
 
         $resultado =self::$db->query($query);
 
-
+        return $resultado;
     }
 
     public function atributos(){
@@ -89,6 +89,17 @@ class Propiedad {
         return $sanitizado;
 
     }
+    
+    //subida de archivo
+
+    public function setImage($imagen){
+        //asignar al tributo de imagen nombre de la imagen 
+        
+        if($imagen){
+            $this->imagen = $imagen;
+        }
+    }
+
 
     //validaciones
 
@@ -123,16 +134,9 @@ class Propiedad {
         if (!$this->vendedorid) {
             self::$errores[] = "Debes seleccionar un vendedor";
         }
-        // //validando por tamaños (100kb max)
-        // $medida = 1000 * 100;
-        // if ($this->imagen['size'] > $medida) {
-        //     self::$errores[] = "El archivo debe pesar menos de 100kb";
-        // }
-        // //validando imagen
-    
-        // if (!$this->imagen['name']) {
-        //     self::$errores[] = "Debes cargar una imagen a la propiedad";
-        // }
+        if(!$this->imagen){
+            self::$errores[] = 'La imagen es Obligatoria';
+        }
        
         return self::$errores;
 

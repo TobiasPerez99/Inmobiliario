@@ -2,9 +2,11 @@
 require '../../includes/app.php';
 
 use App\Propiedad;
+use Intervention\Image\ImageManagerStatic as Image;
+
+
 
 estaAutenticado();
-
 $db = conectarDB();
 
 //obtener vendedores
@@ -28,8 +30,30 @@ $vendedor = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
+//Creamos una nueva instancia de propiedad
+
     $propiedad = new Propiedad($_POST);
 
+    //creamos carpeta
+
+    $carpetaImagenes = '../../imagenes/';
+
+    if (!is_dir($carpetaImagenes)) {
+        mkdir($carpetaImagenes);
+    }
+
+    //randomico nombre
+
+    $nombreImagen = md5(uniqid(rand(), true)) . ".jpg";
+
+    //definimos imagen
+    if($_FILES['imagen']['tmp_name']){
+        $image = Image::make($_FILES['imagen']['tmp_name'])->fit(800,600);
+        $propiedad->setImage($nombreImagen);
+    }
+
+    //validamos
+    
     $errores =  $propiedad->validar();
 
     // debuguear($errores);
@@ -38,35 +62,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (empty($errores)) {
 
-        $propiedad->guardar();
 
-        //asignando imagen
-
-        $imagen = $_FILES['imagen'];
-
-        //Subiendo archivos
-
-        //crear carpeta
-
-        $carpetaImagenes = '../../imagenes/';
-
-        if (!is_dir($carpetaImagenes)) {
-            mkdir($carpetaImagenes);
+        //Crear la carpeta para subir imagenes
+        if(!is_dir(CARPETA_IMAGENES)){
+            mkdir(CARPETA_IMAGENES);
         }
 
-        //randomico nombre
+        //guarda la imagen en el servidor
+        $image->save($carpetaImagenes . $nombreImagen );
+        
+        //Guarda en la base de datos
 
-        $nombreImagen = md5(uniqid(rand(), true)) . ".jpg";
+        $resultado = $propiedad->guardar();
 
 
-        //subir la  imagen
-        move_uploaded_file($imagen['tmp_name'], $carpetaImagenes . $nombreImagen);
-
-        // $resultado = mysqli_query($db, $query);
-
-        // if ($resultado) {
-        //     header('Location: /admin?resultado=1');
-        // }
+        if ($resultado) {
+            header('Location: /admin?resultado=1');
+        }
     }
 }
 incluirTemplate('header');
