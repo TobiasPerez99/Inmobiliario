@@ -6,5 +6,7 @@
             "App\\" : "./classes"
         }
     },
-    "require": {}
+    "require": {
+        "intervention/image": "^2.6"
+    }
 }
