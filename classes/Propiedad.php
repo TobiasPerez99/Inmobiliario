@@ -7,6 +7,10 @@ class Propiedad {
     protected static $db;
     protected static $columnasDB = ['id','titulo','precio', 'imagen' , 'descripcion', 'habitaciones', 'wc' , 'estacionamiento' , 'creado', 'vendedorid'];
 
+    //Errores 
+
+    protected static $errores = []; 
+
     public $id;
     public $titulo;
     public $precio;
@@ -54,9 +58,6 @@ class Propiedad {
 
         $resultado =self::$db->query($query);
 
-        // debuguear($query);
-
-        // debuguear($resultado);
 
     }
 
@@ -87,8 +88,56 @@ class Propiedad {
 
         return $sanitizado;
 
+    }
+
+    //validaciones
+
+    public static function getErrores(){
+        return self::$errores;
+    }
+
+    public function validar(){
+
+
+        if (!$this->titulo) {
+            self::$errores[] = "Debes agregar un Titulo";
+        }
+        if (!$this->precio) {
+            self::$errores[] = "Debes agregar un Precio";
+        }
+        if (strlen($this->descripcion) < 1) {
+            self::$errores[] = "La descripcion debe ser mayor a 50 caracteres";
+        }
+        if (!$this->habitaciones) {
+            self::$errores[] = "Debes agregar un numero de habitaciones";
+        }
+        if (!$this->estacionamiento) {
+            self::$errores[] = "Debes agregar un numero de estacionamientos";
+        }
+        if (!$this->wc) {
+            self::$errores[] = "Debes agregar un numero de baños";
+        }
+        if (!$this->titulo) {
+            self::$errores[] = "Debes agregar un valor";
+        }
+        if (!$this->vendedorid) {
+            self::$errores[] = "Debes seleccionar un vendedor";
+        }
+        // //validando por tamaños (100kb max)
+        // $medida = 1000 * 100;
+        // if ($this->imagen['size'] > $medida) {
+        //     self::$errores[] = "El archivo debe pesar menos de 100kb";
+        // }
+        // //validando imagen
+    
+        // if (!$this->imagen['name']) {
+        //     self::$errores[] = "Debes cargar una imagen a la propiedad";
+        // }
+       
+        return self::$errores;
 
     }
+
 
 }
 

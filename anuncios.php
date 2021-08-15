@@ -11,7 +11,7 @@ incluirTemplate('header');
 
     <?php
 
-    $limite = 9999999;
+    $limite = 9999;
 
     include 'includes/templates/anuncios.php';
 

@@ -11,11 +11,9 @@ $db = conectarDB();
 $consulta = "SELECT * FROM vendedores";
 $resultado1 = mysqli_query($db, $consulta);
 
-
-
-
 //Arreglo con mensajes de erro
-$errores = [];
+$errores = Propiedad::getErrores();
+
 
 $titulo = '';
 $precio = '';
@@ -32,62 +30,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $propiedad = new Propiedad($_POST);
 
-    // debuguear($propiedad);
+    $errores =  $propiedad->validar();
 
-    $propiedad->guardar();
-
-    $titulo = mysqli_real_escape_string($db,  $_POST['titulo']);
-    $precio = mysqli_real_escape_string($db,  $_POST['precio']);
-    $descripcion = mysqli_real_escape_string($db,  $_POST['descripcion']);
-    $habitaciones = mysqli_real_escape_string($db,  $_POST['habitaciones']);
-    $estacionamiento = mysqli_real_escape_string($db,  $_POST['estacionamiento']);
-    $wc = mysqli_real_escape_string($db,  $_POST['wc']);
-    $creado = date('Y/m/d');
-    $vendedor = mysqli_real_escape_string($db,  $_POST['vendedorid']);
-
-    //asignando imagen
-
-    $imagen = $_FILES['imagen'];
-
-
-    if (!$titulo) {
-        $errores[] = "Debes agregar un Titulo";
-    }
-    if (!$precio) {
-        $errores[] = "Debes agregar un Precio";
-    }
-    if (strlen($descripcion) < 1) {
-        $errores[] = "La descripcion debe ser mayor a 50 caracteres";
-    }
-    if (!$habitaciones) {
-        $errores[] = "Debes agregar un numero de habitaciones";
-    }
-    if (!$estacionamiento) {
-        $errores[] = "Debes agregar un numero de estacionamientos";
-    }
-    if (!$wc) {
-        $errores[] = "Debes agregar un numero de baños";
-    }
-    if (!$titulo) {
-        $errores[] = "Debes agregar un valor";
-    }
-    if (!$vendedor) {
-        $errores[] = "Debes seleccionar un vendedor";
-    }
-    //validando por tamaños (100kb max)
-    $medida = 1000 * 100;
-    if ($imagen['size'] > $medida) {
-        $errores[] = "El archivo debe pesar menos de 100kb";
-    }
-    //validando imagen
-
-    if (!$imagen['name']) {
-        $errores[] = "Debes cargar una imagen a la propiedad";
-    }
+    // debuguear($errores);
 
     //insertando en la db
 
     if (empty($errores)) {
+
+        $propiedad->guardar();
+
+        //asignando imagen
+
+        $imagen = $_FILES['imagen'];
 
         //Subiendo archivos
 

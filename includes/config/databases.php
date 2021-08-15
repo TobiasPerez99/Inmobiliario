@@ -2,7 +2,7 @@
 
 function conectarDB() : mysqli{
 
-    $db = new mysqli('192.168.0.13','meemba' , 'meemba', 'bienes_raices');
+    $db = new mysqli('127.0.0.1','root' , '', 'bienes_raices');
 
     if (!$db) {
         echo "Eror no se pudo conectar";

@@ -8,4 +8,7 @@ $db = conectarDB();
 
 use App\Propiedad;
 
+
 Propiedad::setDB($db);
+
+Propiedad::getErrores();
